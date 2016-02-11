@@ -17,7 +17,8 @@ class DefaultHeader extends Component {
      super(props);
 
      this.state = {
-       imagen: '../../assets/img/avatars/6.jpg'
+       imagen: '../../assets/img/avatars/6.jpg',
+       username: ''
      }
    }
 
@@ -26,7 +27,8 @@ componentDidMount(){
   
   if(user.photo)
      this.setState({
-        imagen: 'http://157.56.176.217'.concat(user.photo.slice(21))
+       // imagen: 'http://157.56.176.217'.concat(user.photo.slice(21)),
+        username : user.full_name
       })
 }
 
@@ -56,12 +58,11 @@ componentDidMount(){
           <NavItem className="d-md-down-none">
             <NavLink to="#" className="nav-link"><i className="icon-bell"></i><Badge pill color="danger">5</Badge></NavLink>
           </NavItem>
+          
           <NavItem className="d-md-down-none">
-            <NavLink to="#" className="nav-link"><i className="icon-list"></i></NavLink>
+            <NavLink to="#" className="nav-link">  <i className="cui-user icons font-2xl i-block mt-2"/> </NavLink>
           </NavItem>
-          <NavItem className="d-md-down-none">
-            <NavLink to="#" className="nav-link"><i className="icon-location-pin"></i></NavLink>
-          </NavItem>
+          <NavItem>  { this.state.username } </NavItem>
           <UncontrolledDropdown nav direction="down">
             <DropdownToggle nav>
               <img src={ this.state.imagen } className="img-avatar" alt="admin@bootstrapmaster.com" />

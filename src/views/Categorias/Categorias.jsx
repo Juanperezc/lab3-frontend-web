@@ -4,8 +4,8 @@ import React from 'react'
 import CategoriasTable from './CategoriasTable';
 import CategoriaModal from './CategoriaModal';
 
-//Data
-import categorias from './data';
+//Services
+import CategoryService from '../../services/category.service';
 
 export default class Categorias extends React.Component {
 
@@ -13,20 +13,33 @@ export default class Categorias extends React.Component {
 		super(props);
 
 		this.state = {
-			categorias : categorias,
+			categorias : [],
 			modal : false,
-			categoria : {id: 0 , nombre: '', status:'Active'}
+			categoria : {_id: 0 , name: '', status:'Active'}
 		}
 	}
 
-buscarCategoria = (key)=>{
+componentDidMount(){
 
-	let idx = 0;
+	CategoryService.getAll()
+		.then(res =>{
+			const categorias = res.data.categorias;
+			this.setState({ categorias })
+			//categorias.forEach(x=>console.log(x))
+		})		
+		.catch(err=>{console.error(err)})
 
-	while(this.state.categorias[idx].id !== key) 
-			idx++;
+}
 
-	return idx;
+buscarCategoria = (id)=>{
+
+	let i = 0;
+	const size = this.state.categorias.length;
+	
+	while(this.state.categorias[i]._id !== id && i < size )
+			i++
+
+	return i;
 }
 
 
@@ -47,7 +60,7 @@ toggleModal = ()=> {
 
 	if(this.state.modal)
 		this.setState({
-		categoria : {id: 0 , nombre: '', status:'Active'}
+		categoria : {id: 0 , name: '', status:'Active'}
 	})
 
     this.setState({
@@ -61,15 +74,22 @@ handleOnSubmitForm = (event)=>{
 	event.preventDefault();
 	let form = event.target;
 	let categoria;
-
+	console.log(form.id)
+	
 	if(parseInt(form.id.value) === 0){
+	  categoria = { name : form.nombre.value , status : 'Active'};
 
-	  let id = this.state.categorias[this.state.categorias.length - 1].id + 1;
-	  categoria = { id : id, nombre : form.nombre.value , status : 'Active'};
+	 CategoryService.save(categoria)
+	 	.then(res=>{
+	 		 console.log(res.data)
+	 		 const categorias = this.state.categorias.concat(res.data.category);
+	 		 this.setState({ categorias })
 
-	  this.setState({ 
+	 		})
+	 	.catch(err=>{ console.error(err)})
+	  /*this.setState({ 
 		categorias : this.state.categorias.concat(categoria)	
-	  })
+	  })*/
 
 	}else{
 
@@ -103,14 +123,12 @@ editCategoria = (key)=>{
 
 habdleOnChangeCategoria = (event)=>{
 
-	let nombre = event.target.value;
+	const nombre = event.target.value;
 
 	const categoria = this.state.categoria;
-	categoria.nombre = nombre
+	categoria.name = nombre
 
-	this.setState({
-		categoria : categoria
-	})
+	this.setState({ categoria })
 }
 
 	render(){

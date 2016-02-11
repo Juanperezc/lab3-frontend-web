@@ -20,7 +20,7 @@ const CategoriaModal = (props)=>(
 		                    </Col>
 		                    <Col xs="12" md="9">
 		                      <Input type="text" id="nombre"
-		                      		 value={ props.categoria.nombre}
+		                      		 value={ props.categoria.name }
 		                      		 onChange = { props.change }
 		                      		 name="nombre" placeholder="Ingrese el Nombre..."
 		                      		  autoComplete="nombre" />
@@ -28,7 +28,7 @@ const CategoriaModal = (props)=>(
 		                    </Col>
 		                  </FormGroup>
 		                 
-		                  <Input type="hidden" id="" name="id" value={ props.categoria.id } />
+		                  <Input type="hidden" id="" name="id" value={ props.categoria._id } />
 		                 
 		                	<Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Guardar</Button>
 		                	<Button type="reset" name="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Restablecer</Button>
