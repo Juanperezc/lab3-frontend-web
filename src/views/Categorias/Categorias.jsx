@@ -45,14 +45,28 @@ buscarCategoria = (id)=>{
 
 deleteCategoria = (key)=>{
 
-	const categorias =  this.state.categorias.slice();
+	CategoryService.delete(key)
+		.then(resp=>{
+			console.log(resp)
+			const categoria = resp.data.category;
+			const idx = this.buscarCategoria(categoria._id);
+			
+			const categorias = this.state.categorias.slice();
+			categorias.splice(idx,1);
+
+			this.setState({ categorias })
+
+		})
+		.catch(err=> console.error(err))
+
+	/*const categorias =  this.state.categorias.slice();
 	let idx = this.buscarCategoria(key);
 
 	categorias.splice(idx,1);
 
 	this.setState({
 		categorias : categorias	
-	})
+	})*/
 }
 
 
@@ -87,22 +101,24 @@ handleOnSubmitForm = (event)=>{
 
 	 		})
 	 	.catch(err=>{ console.error(err)})
-	  /*this.setState({ 
-		categorias : this.state.categorias.concat(categoria)	
-	  })*/
 
 	}else{
+		const cat = { ...this.state.categoria }
+		
+		CategoryService.update(cat)
+			.then(resp =>{
+				console.log(resp.data);
 
-		const categorias = this.state.categorias.slice();
-		categoria = this.state.categoria;
-		categorias[this.buscarCategoria(categoria.id)] = categoria;
+				const categoria = resp.data.category;
+				const idx = this.buscarCategoria(categoria._id);
+				const categorias = this.state.categorias.slice();
 
-		this.setState({
-			categorias : categorias
-		})
+				categorias[idx] = categoria
+				this.setState({ categorias })
+			})
+			.catch(err=>{console.error(err)})
 	}
 
-	
 	this.toggleModal();
 	this.setState({
 		categoria : {id: 0 , nombre: '', status:'Active'}
@@ -116,17 +132,14 @@ editCategoria = (key)=>{
 	this.setState({
 		categoria: this.state.categorias[idx]
 	})
-
 	this.toggleModal()
-
 }
 
 habdleOnChangeCategoria = (event)=>{
 
-	const nombre = event.target.value;
+	const name = event.target.value;
 
-	const categoria = this.state.categoria;
-	categoria.name = nombre
+	const categoria = { ...this.state.categoria, name };
 
 	this.setState({ categoria })
 }

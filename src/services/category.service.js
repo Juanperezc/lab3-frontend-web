@@ -10,5 +10,13 @@ class CategoryService {
 
     	return axios.post('/categorys',data)
     }
+
+    static update(data){
+    	return axios.put(`/categorys/${data._id}`, data)
+    }
+
+    static delete(id){
+    	return axios.delete(`/categorys/${id}`);
+    }
 }
 export default CategoryService;
