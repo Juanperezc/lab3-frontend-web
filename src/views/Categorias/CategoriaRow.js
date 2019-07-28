@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Badge } from 'reactstrap';
+import { Badge , Button } from 'reactstrap';
 
 
 const CategoriaRow = (props) => {
@@ -21,6 +21,10 @@ const CategoriaRow = (props) => {
       <th scope="row"><Link to={categoriaLink}>{categoria.id}</Link></th>
       <td><Link to={categoriaLink}>{categoria.nombre}</Link></td>
       <td><Link to={categoriaLink}><Badge color={getBadge(categoria.status)}>{categoria.status}</Badge></Link></td>
+      <td> <Button  size="sm" color="ghost-danger" onClick={ ()=> props.delete(categoria.id)} >
+               <i className="cui-trash icons font-2xl d-block mt-2"></i>
+            </Button>
+      </td>
     </tr>
   )
 }

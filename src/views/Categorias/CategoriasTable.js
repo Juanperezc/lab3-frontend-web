@@ -23,11 +23,13 @@ const CategoriasTable = (props)=>(
                       <th scope="col">id</th>
                       <th scope="col">nombre</th>
                       <th scope="col">estatus</th>
+                      <th scope="col"> Deshabilitar</th>
+
                     </tr>
                   </thead>
                   <tbody>
                     {props.categorias.map((categoria, index) =>
-                      <CategoriaRow key={index} categoria={categoria}/>
+                      <CategoriaRow key={index} categoria={categoria} delete = { props.delete }/>
                     )}
                   </tbody>
                 </Table>

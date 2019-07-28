@@ -16,10 +16,24 @@ export default class Categorias extends React.Component {
 		}
 	}
 
+deleteCategoria = (key)=>{
+
+	const categorias =  this.state.categorias.slice();
+	let idx = 0;
+
+	while(categorias[idx].id !== key)
+			idx++;
+
+	categorias.splice(idx,1);
+
+	this.setState({
+		categorias : categorias
+	})
+}
 
 	render(){
 		return(
-			<CategoriasTable categorias = { this.state.categorias } />
+			<CategoriasTable delete = { this.deleteCategoria } categorias = { this.state.categorias } />
 		)
 	}
 } 
