@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
+import { Card, Button, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
 
 //components
 import CategoriaRow from './CategoriaRow';
@@ -15,6 +15,7 @@ const CategoriasTable = (props)=>(
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i> Listado de Categorias <small className="text-muted"> </small>
+                 <Button onClick = { props.add } className= "float-right" color="primary">Agregar</Button>
               </CardHeader>
               <CardBody>
                 <Table responsive hover>
@@ -23,7 +24,7 @@ const CategoriasTable = (props)=>(
                       <th scope="col">id</th>
                       <th scope="col">nombre</th>
                       <th scope="col">estatus</th>
-                      <th scope="col"> Deshabilitar</th>
+                      <th scope="col"> Eliminar</th>
 
                     </tr>
                   </thead>
