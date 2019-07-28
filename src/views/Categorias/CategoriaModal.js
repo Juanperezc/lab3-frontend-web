@@ -19,12 +19,16 @@ const CategoriaModal = (props)=>(
 		                      <Label htmlFor="nombre">Nombre</Label>
 		                    </Col>
 		                    <Col xs="12" md="9">
-		                      <Input type="text" id="nombre" name="nombre" placeholder="Ingrese el Nombre..." autoComplete="nombre" />
+		                      <Input type="text" id="nombre"
+		                      		 value={ props.categoria.nombre}
+		                      		 onChange = { props.change }
+		                      		 name="nombre" placeholder="Ingrese el Nombre..."
+		                      		  autoComplete="nombre" />
 		                      <FormText className="help-block">Ingrese el nombre de la categoria</FormText>
 		                    </Col>
 		                  </FormGroup>
 		                 
-		                  <Input type="hidden" id="" name="id" />
+		                  <Input type="hidden" id="" name="id" value={ props.categoria.id } />
 		                 
 		                	<Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Guardar</Button>
 		                	<Button type="reset" name="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Restablecer</Button>

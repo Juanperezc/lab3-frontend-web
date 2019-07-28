@@ -14,17 +14,25 @@ export default class Categorias extends React.Component {
 
 		this.state = {
 			categorias : categorias,
-			modal : false
+			modal : false,
+			categoria : {id: 0 , nombre: '', status:'Active'}
 		}
 	}
+
+buscarCategoria = (key)=>{
+
+	let idx = 0;
+
+	while(this.state.categorias[idx].id !== key) 
+			idx++;
+
+	return idx;
+}
 
 deleteCategoria = (key)=>{
 
 	const categorias =  this.state.categorias.slice();
-	let idx = 0;
-
-	while(categorias[idx].id !== key) 
-			idx++;
+	let idx = this.buscarCategoria(key);
 
 	categorias.splice(idx,1);
 
@@ -44,19 +52,58 @@ handleOnSubmitForm = (event)=>{
 
 	event.preventDefault();
 	let form = event.target;
+	let categoria;
 
-	let nombre = form.nombre.value;
-	let id =  this.state.categorias[this.state.categorias.length - 1].id + 1;
+	if(parseInt(form.id.value) === 0){
 
-	let categoria = { id : id, nombre : nombre , status : 'Active'}
-	
-	this.setState({
+	  let id = this.state.categorias[this.state.categorias.length - 1].id + 1;
+	  categoria = { id : id, nombre : form.nombre.value , status : 'Active'};
+
+	  this.setState({ 
 		categorias : this.state.categorias.concat(categoria)	
-	})
+	  })
 
-	form.nombre.value = '';
+	}else{
+
+		const categorias = this.state.categorias.slice();
+		categoria = this.state.categoria;
+		categorias[this.buscarCategoria(categoria.id)] = categoria;
+
+		this.setState({
+			categorias : categorias
+		})
+	}
+
 	
 	this.toggleModal();
+	this.setState({
+		categoria : {id: 0 , nombre: '', status:''}
+	})
+}
+
+editCategoria = (key)=>{
+
+	let idx = this.buscarCategoria(key);
+
+	this.setState({
+		categoria: this.state.categorias[idx]
+	})
+
+	this.toggleModal()
+
+}
+
+habdleOnChangeCategoria = (event)=>{
+
+	let nombre = event.target.value;
+
+	const categoria = this.state.categoria;
+	categoria.nombre = nombre
+
+	this.setState({
+		categoria : categoria
+	})
+
 }
 
 	render(){
@@ -66,6 +113,8 @@ handleOnSubmitForm = (event)=>{
 					delete = { this.deleteCategoria } 
 					categorias = { this.state.categorias }
 					add = { this.toggleModal }
+					edit = { this.editCategoria }
+
 				/>
 
 				<CategoriaModal 
@@ -73,6 +122,8 @@ handleOnSubmitForm = (event)=>{
 					info = { this.state.modal }
 					className = "info"
 					submit = { this.handleOnSubmitForm }
+					categoria = { this.state.categoria }
+					change = { this.habdleOnChangeCategoria }
 				/>
 			
 			</div>

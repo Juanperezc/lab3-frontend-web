@@ -30,7 +30,7 @@ const CategoriasTable = (props)=>(
                   </thead>
                   <tbody>
                     {props.categorias.map((categoria, index) =>
-                      <CategoriaRow key={index} categoria={categoria} delete = { props.delete }/>
+                      <CategoriaRow key={index} edit= {()=> props.edit(categoria.id) } categoria={categoria} delete = { props.delete }/>
                     )}
                   </tbody>
                 </Table>
