@@ -10,6 +10,15 @@ export default {
       },
     },
     {
+      name: 'Categorias',
+      url: '/categorias',
+      icon: 'cui-list',
+      badge: {
+        variant: 'info',
+        text: 'VIEW',
+      },
+    },
+    {
       title: true,
       name: 'Theme',
       wrapper: {            // optional wrapper object

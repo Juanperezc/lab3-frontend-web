@@ -29,6 +29,7 @@ buscarCategoria = (key)=>{
 	return idx;
 }
 
+
 deleteCategoria = (key)=>{
 
 	const categorias =  this.state.categorias.slice();
@@ -43,9 +44,16 @@ deleteCategoria = (key)=>{
 
 
 toggleModal = ()=> {
+
+	if(this.state.modal === true)
+		this.setState({
+		categoria : {id: 0 , nombre: '', status:'Active'}
+	})
+
     this.setState({
       modal: !this.state.modal,
     });
+
   }
 
 handleOnSubmitForm = (event)=>{
@@ -77,7 +85,7 @@ handleOnSubmitForm = (event)=>{
 	
 	this.toggleModal();
 	this.setState({
-		categoria : {id: 0 , nombre: '', status:''}
+		categoria : {id: 0 , nombre: '', status:'Active'}
 	})
 }
 
@@ -103,7 +111,6 @@ habdleOnChangeCategoria = (event)=>{
 	this.setState({
 		categoria : categoria
 	})
-
 }
 
 	render(){

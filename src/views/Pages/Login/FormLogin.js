@@ -9,15 +9,15 @@ const FormLogin = (props)=>(
         <CardBody>
             <Form>
                 <h1>Login</h1>
-                <p className="text-muted">Sign In to your account</p>
+                <p className="text-muted">Ingrese con su Cuenta</p>
                 <InputGroup className="mb-3">
                     <InputGroupAddon addonType="prepend">
                         <InputGroupText>
                             <i className="icon-user"></i>
                         </InputGroupText>
                     </InputGroupAddon>
-                    <Input type="text" placeholder="Username"
-                           autoComplete="username" 
+                    <Input type="text" placeholder="Nombre de Usuario"
+                           autoComplete="Nombre de Usuario" 
                            value= { props.username }
                            onChange={ props.changeUsername }
                     />
@@ -28,7 +28,7 @@ const FormLogin = (props)=>(
                             <i className="icon-lock"></i>
                         </InputGroupText>
                     </InputGroupAddon>
-                    <Input type="password" placeholder="Password"
+                    <Input type="password" placeholder="Contraseña"
                               autoComplete="current-password"
                               onChange={ props.changePass }
                               value= { props.pass }
@@ -38,11 +38,11 @@ const FormLogin = (props)=>(
                     <Col xs="6">
                         <Button color="primary"
                             onClick= { props.clickLogin }
-                            className="px-4">Login
+                            className="px-4">Ingresar
                            </Button>
                     </Col>
                     <Col xs="6" className="text-right">
-                          <Button color="link" className="px-0">Forgot password?</Button>
+                          <Button color="link" className="px-0">Olvido su Contraseña?</Button>
                     </Col>
                 </Row>
             </Form>

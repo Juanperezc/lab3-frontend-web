@@ -33,10 +33,10 @@ const brandDanger = getStyle('--danger')
 
 // Card Chart 1
 const cardChartData1 = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Mi Primer Conjunto de Datos',
       backgroundColor: brandPrimary,
       borderColor: 'rgba(255,255,255,.55)',
       data: [65, 59, 84, 84, 51, 55, 40],
@@ -91,10 +91,10 @@ const cardChartOpts1 = {
 
 // Card Chart 2
 const cardChartData2 = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Mi Primer Conjunto de Datos',
       backgroundColor: brandInfo,
       borderColor: 'rgba(255,255,255,.55)',
       data: [1, 18, 9, 17, 34, 22, 11],
@@ -149,10 +149,10 @@ const cardChartOpts2 = {
 
 // Card Chart 3
 const cardChartData3 = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Mi Primer Conjunto de Datos',
       backgroundColor: 'rgba(255,255,255,.2)',
       borderColor: 'rgba(255,255,255,.55)',
       data: [78, 81, 80, 45, 34, 12, 40],
@@ -196,7 +196,7 @@ const cardChartData4 = {
   labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Mi Primer Conjunto de Datos',
       backgroundColor: 'rgba(255,255,255,.3)',
       borderColor: 'transparent',
       data: [78, 81, 80, 45, 34, 12, 40, 75, 34, 89, 32, 68, 54, 72, 18, 98],
@@ -237,7 +237,7 @@ const socialBoxData = [
 const makeSocialBoxData = (dataSetNo) => {
   const dataset = socialBoxData[dataSetNo];
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels:  ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
     datasets: [
       {
         backgroundColor: 'rgba(255,255,255,.1)',
@@ -286,15 +286,15 @@ const socialChartOpts = {
 const sparkLineChartData = [
   {
     data: [35, 23, 56, 22, 97, 23, 64],
-    label: 'New Clients',
+    label: 'Nuevos Clientes',
   },
   {
     data: [65, 59, 84, 84, 51, 55, 40],
-    label: 'Recurring Clients',
+    label: 'Clientes Frecuentes',
   },
   {
     data: [35, 23, 56, 22, 97, 23, 64],
-    label: 'Pageviews',
+    label: 'Páginas vistas',
   },
   {
     data: [65, 59, 84, 84, 51, 55, 40],
@@ -313,7 +313,7 @@ const sparkLineChartData = [
 const makeSparkLineData = (dataSetNo, variant) => {
   const dataset = sparkLineChartData[dataSetNo];
   const data = {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
     datasets: [
       {
         backgroundColor: 'transparent',
@@ -378,10 +378,10 @@ for (var i = 0; i <= elements; i++) {
 }
 
 const mainChart = {
-  labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+  labels: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Bi', 'Sa', 'Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Mi Primer Conjundo de Datos',
       backgroundColor: hexToRgba(brandInfo, 10),
       borderColor: brandInfo,
       pointHoverBackgroundColor: '#fff',
@@ -389,7 +389,7 @@ const mainChart = {
       data: data1,
     },
     {
-      label: 'My Second dataset',
+      label: 'Mi Segundo Conjundo de Datos',
       backgroundColor: 'transparent',
       borderColor: brandSuccess,
       pointHoverBackgroundColor: '#fff',
@@ -397,7 +397,7 @@ const mainChart = {
       data: data2,
     },
     {
-      label: 'My Third dataset',
+      label: 'Mi Tercer Conjundo de Datos',
       backgroundColor: 'transparent',
       borderColor: brandDanger,
       pointHoverBackgroundColor: '#fff',
@@ -501,7 +501,7 @@ class Dashboard extends Component {
                   </ButtonDropdown>
                 </ButtonGroup>
                 <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div>Usuarios Activos</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData2} options={cardChartOpts2} height={70} />
@@ -525,7 +525,7 @@ class Dashboard extends Component {
                   </Dropdown>
                 </ButtonGroup>
                 <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div>Usuarios Activos</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData1} options={cardChartOpts1} height={70} />
@@ -549,7 +549,7 @@ class Dashboard extends Component {
                   </Dropdown>
                 </ButtonGroup>
                 <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div>Usuarios Activos</div>
               </CardBody>
               <div className="chart-wrapper" style={{ height: '70px' }}>
                 <Line data={cardChartData3} options={cardChartOpts3} height={70} />
@@ -573,7 +573,7 @@ class Dashboard extends Component {
                   </ButtonDropdown>
                 </ButtonGroup>
                 <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div>Usuarios Activos</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Bar data={cardChartData4} options={cardChartOpts4} height={70} />
@@ -587,8 +587,8 @@ class Dashboard extends Component {
               <CardBody>
                 <Row>
                   <Col sm="5">
-                    <CardTitle className="mb-0">Traffic</CardTitle>
-                    <div className="small text-muted">November 2015</div>
+                    <CardTitle className="mb-0">Trafico</CardTitle>
+                    <div className="small text-muted">Julio 2019</div>
                   </Col>
                   <Col sm="7" className="d-none d-sm-inline-block">
                     <Button color="primary" className="float-right"><i className="icon-cloud-download"></i></Button>
@@ -608,23 +608,23 @@ class Dashboard extends Component {
               <CardFooter>
                 <Row className="text-center">
                   <Col sm={12} md className="mb-sm-2 mb-0">
-                    <div className="text-muted">Visits</div>
-                    <strong>29.703 Users (40%)</strong>
+                    <div className="text-muted">Visitas</div>
+                    <strong>29.703 Usuarios (40%)</strong>
                     <Progress className="progress-xs mt-2" color="success" value="40" />
                   </Col>
                   <Col sm={12} md className="mb-sm-2 mb-0 d-md-down-none">
-                    <div className="text-muted">Unique</div>
-                    <strong>24.093 Users (20%)</strong>
+                    <div className="text-muted">Unicos</div>
+                    <strong>24.093 Usuarios (20%)</strong>
                     <Progress className="progress-xs mt-2" color="info" value="20" />
                   </Col>
                   <Col sm={12} md className="mb-sm-2 mb-0">
-                    <div className="text-muted">Pageviews</div>
-                    <strong>78.706 Views (60%)</strong>
+                    <div className="text-muted">Páginas vistas</div>
+                    <strong>78.706 Visualizaciones (60%)</strong>
                     <Progress className="progress-xs mt-2" color="warning" value="60" />
                   </Col>
                   <Col sm={12} md className="mb-sm-2 mb-0">
-                    <div className="text-muted">New Users</div>
-                    <strong>22.123 Users (80%)</strong>
+                    <div className="text-muted">Nuevos Usuarios</div>
+                    <strong>22.123 Usuarios (80%)</strong>
                     <Progress className="progress-xs mt-2" color="danger" value="80" />
                   </Col>
                   <Col sm={12} md className="mb-sm-2 mb-0 d-md-down-none">
@@ -692,7 +692,7 @@ class Dashboard extends Component {
                     <Row>
                       <Col sm="6">
                         <div className="callout callout-info">
-                          <small className="text-muted">New Clients</small>
+                          <small className="text-muted">Nuevos Clientes</small>
                           <br />
                           <strong className="h4">9,123</strong>
                           <div className="chart-wrapper">
@@ -702,7 +702,7 @@ class Dashboard extends Component {
                       </Col>
                       <Col sm="6">
                         <div className="callout callout-danger">
-                          <small className="text-muted">Recurring Clients</small>
+                          <small className="text-muted"> Clientes Frecuentes</small>
                           <br />
                           <strong className="h4">22,643</strong>
                           <div className="chart-wrapper">
@@ -792,18 +792,18 @@ class Dashboard extends Component {
                     <div className="legend text-center">
                       <small>
                         <sup className="px-1"><Badge pill color="info">&nbsp;</Badge></sup>
-                        New clients
+                        Nuevos clientes
                         &nbsp;
                         <sup className="px-1"><Badge pill color="danger">&nbsp;</Badge></sup>
-                        Recurring clients
-                      </small>
+                        Clientes Frecuentes
+                       </small>
                     </div>
                   </Col>
                   <Col xs="12" md="6" xl="6">
                     <Row>
                       <Col sm="6">
                         <div className="callout callout-warning">
-                          <small className="text-muted">Pageviews</small>
+                          <small className="text-muted">Páginas Vistas</small>
                           <br />
                           <strong className="h4">78,623</strong>
                           <div className="chart-wrapper">
@@ -827,7 +827,7 @@ class Dashboard extends Component {
                       <div className="progress-group">
                         <div className="progress-group-header">
                           <i className="icon-user progress-group-icon"></i>
-                          <span className="title">Male</span>
+                          <span className="title">Hombre</span>
                           <span className="ml-auto font-weight-bold">43%</span>
                         </div>
                         <div className="progress-group-bars">
@@ -837,7 +837,7 @@ class Dashboard extends Component {
                       <div className="progress-group mb-5">
                         <div className="progress-group-header">
                           <i className="icon-user-female progress-group-icon"></i>
-                          <span className="title">Female</span>
+                          <span className="title">Mujeres</span>
                           <span className="ml-auto font-weight-bold">37%</span>
                         </div>
                         <div className="progress-group-bars">
@@ -897,10 +897,10 @@ class Dashboard extends Component {
                   <tr>
                     <th className="text-center"><i className="icon-people"></i></th>
                     <th>User</th>
-                    <th className="text-center">Country</th>
+                    <th className="text-center">País</th>
                     <th>Usage</th>
-                    <th className="text-center">Payment Method</th>
-                    <th>Activity</th>
+                    <th className="text-center">Methodo de Pago</th>
+                    <th>Actividad</th>
                   </tr>
                   </thead>
                   <tbody>
