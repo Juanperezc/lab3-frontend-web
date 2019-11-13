@@ -39,17 +39,17 @@ class Users extends Component {
           <Col xl={6}>
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i> Users <small className="text-muted">example</small>
+                <i className="fa fa-align-justify"></i> Usuarios <small className="text-muted">example</small>
               </CardHeader>
               <CardBody>
                 <Table responsive hover>
                   <thead>
                     <tr>
                       <th scope="col">id</th>
-                      <th scope="col">name</th>
-                      <th scope="col">registered</th>
-                      <th scope="col">role</th>
-                      <th scope="col">status</th>
+                      <th scope="col">nombre</th>
+                      <th scope="col">registrado desde</th>
+                      <th scope="col">rol</th>
+                      <th scope="col">estatus</th>
                     </tr>
                   </thead>
                   <tbody>

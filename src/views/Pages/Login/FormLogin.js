@@ -9,17 +9,17 @@ const FormLogin = (props)=>(
         <CardBody>
             <Form>
                 <h1>Login</h1>
-                <p className="text-muted">Ingrese con su Cuenta</p>
+                <p className="text-muted">Ingrese Sus Datos</p>
                 <InputGroup className="mb-3">
                     <InputGroupAddon addonType="prepend">
                         <InputGroupText>
                             <i className="icon-user"></i>
                         </InputGroupText>
                     </InputGroupAddon>
-                    <Input type="text" placeholder="Nombre de Usuario"
-                           autoComplete="Nombre de Usuario" 
-                           value= { props.username }
-                           onChange={ props.changeUsername }
+                    <Input type="email" placeholder="Email"
+                           autoComplete="Email" 
+                           value= { props.email }
+                           onChange={ props.changeEmail }
                     />
                 </InputGroup>
                 <InputGroup className="mb-4">

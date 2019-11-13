@@ -6,13 +6,16 @@ import { Redirect } from 'react-router-dom'
 import FormLogin from './FormLogin';
 import SignUp from './SignUp';
 
+//servicios
+import userService from '../../../services/userService'
+
 class Login extends Component {
 
   constructor(props){
       super(props);
 
       this.state = {
-        username : '',
+        email : '',
         password : '',
         redirect : false
       }
@@ -24,38 +27,40 @@ class Login extends Component {
     }
   }
 
-  handleOnChangeUsername = (event)=>{
+  handleOnChangeEmail = (event)=>{
 
-    let username = event.target.value;
-
-      this.setState({
-        username : username
-      })
+      const email = event.target.value;
+      this.setState({ email })
   } 
 
   handleOnChangePass = (event)=>{
 
-    let pass = event.target.value;
-
-      this.setState({
-        password : pass
-      })
+    const password = event.target.value;
+    this.setState({ password })
   }  
 
-  handeOnClickLogin = ()=>{
+  handeOnClickLogin = ()=>{    
 
-    let cond = this.state.username.trim().length > 0 && this.state.password.trim().length;
-    let msj = cond ? 'Bienvenido '.concat(this.state.username) :
-              'Error debe ingresar el username y el password';
-    
-    console.log(this.state.username, this.state.password);
-    
-    alert(msj)
-    
-    if(cond)
-      this.setState({
-        redirect : true
-      })
+    const cond = this.state.email.trim().length > 0 && this.state.password.trim().length;
+    /*let msj = cond ? 'Bienvenido '.concat(this.state.username) :
+              'Error debe ingresar el username y el password';*/
+    if(cond){
+
+       const data = {
+        "email": this.state.email,
+        "password" : this.state.password
+       }
+
+       userService.login(data)
+        .then(res=> {console.log(res.data);
+                      this.setState({
+                      redirect: true
+                    })
+        })
+        .catch(err=>console.error(err))
+    }
+        
+      
   }
   render() {
     return (
@@ -65,8 +70,8 @@ class Login extends Component {
             <Col md="8">
               <CardGroup>
                 <FormLogin 
-                  username = { this.state.username }
-                  changeUsername = { this.handleOnChangeUsername }
+                  email = { this.state.email }
+                  changeEmail = { this.handleOnChangeEmail }
                   pass = { this.state.password }
                   changePass= { this.handleOnChangePass }
                   clickLogin= { this.handeOnClickLogin } 

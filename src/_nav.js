@@ -17,8 +17,8 @@ export default {
         variant: 'info',
         text: 'VIEW',
       },
-    },
-    {
+    },]}
+    /* {
       title: true,
       name: 'Theme',
       wrapper: {            // optional wrapper object
@@ -287,3 +287,4 @@ export default {
     },
   ],
 };
+ */
