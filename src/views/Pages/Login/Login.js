@@ -5,9 +5,11 @@ import { Redirect } from 'react-router-dom'
 //Components
 import FormLogin from './FormLogin';
 import SignUp from './SignUp';
+import ModalLogin from './ModalLogin'; 
 
 //servicios
 import userService from '../../../services/userService'
+
 
 class Login extends Component {
 
@@ -17,7 +19,8 @@ class Login extends Component {
       this.state = {
         email : '',
         password : '',
-        redirect : false
+        redirect : false,
+        modal: false
       }
   }
 
@@ -57,14 +60,40 @@ class Login extends Component {
                       redirect: true
                     })
         })
-        .catch(err=>console.error(err))
+        .catch(err=>{
+            console.error(err);
+            this.toggleModal();
+        })
     }
-        
-      
   }
+
+  toggleModal = ()=>{
+    this.setState({ modal: !this.state.modal })
+  }
+
+  showModal = ()=>{
+
+    const modal = this.state.modal ? 
+      
+      <ModalLogin 
+        modal = { this.state.modal }
+        toggleModal = { this.toggleModal }
+        className = {'modal-danger danger' }
+        title = "Error de Autenticación"
+        body= "Email o contraseña invalidos"
+      /> 
+      : null;
+
+      return modal;
+  }
+
   render() {
+
     return (
       <div className="app flex-row align-items-center">
+        
+        { this.showModal() }
+
         <Container>
           <Row className="justify-content-center">
             <Col md="8">

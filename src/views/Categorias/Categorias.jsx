@@ -45,7 +45,7 @@ deleteCategoria = (key)=>{
 
 toggleModal = ()=> {
 
-	if(this.state.modal === true)
+	if(this.state.modal)
 		this.setState({
 		categoria : {id: 0 , nombre: '', status:'Active'}
 	})
