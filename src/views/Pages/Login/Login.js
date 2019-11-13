@@ -9,7 +9,7 @@ import ModalLogin from './ModalLogin';
 
 //servicios
 import userService from '../../../services/userService'
-
+import ConfigStorage from '../../../services/storage/config.store'
 
 class Login extends Component {
 
@@ -44,18 +44,29 @@ class Login extends Component {
 
   handeOnClickLogin = ()=>{    
 
-    const cond = this.state.email.trim().length > 0 && this.state.password.trim().length;
-    /*let msj = cond ? 'Bienvenido '.concat(this.state.username) :
-              'Error debe ingresar el username y el password';*/
-    if(cond){
+    /* {
+    "email": "juanl1996@hotmail.com",
+    "password" : "2514182657"
+    }*/
 
+    const cond = this.state.email.trim().length > 0 && this.state.password.trim().length;
+   
+    if(cond){
        const data = {
         "email": this.state.email,
         "password" : this.state.password
        }
 
        userService.login(data)
-        .then(res=> {console.log(res.data);
+        .then(res=> {
+                      console.log(res.data);
+                      ConfigStorage.setToken(res.data.access_token.token);
+                      ConfigStorage.setUser(res.data.user);
+                      
+                     /* this.setState({
+                        loading: false
+                      });*/
+                      
                       this.setState({
                       redirect: true
                     })
@@ -71,14 +82,14 @@ class Login extends Component {
     this.setState({ modal: !this.state.modal })
   }
 
-  showModal = ()=>{
+  showModal = ()=> {
 
     const modal = this.state.modal ? 
       
       <ModalLogin 
         modal = { this.state.modal }
         toggleModal = { this.toggleModal }
-        className = {'modal-danger danger' }
+        className = "modal-danger danger"
         title = "Error de Autenticación"
         body= "Email o contraseña invalidos"
       /> 
