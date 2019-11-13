@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { CardGroup, Col,  Container, Row } from 'reactstrap';
-import { Redirect } from 'react-router-dom'
 
 //Components
 import FormLogin from './FormLogin';
@@ -19,7 +18,6 @@ class Login extends Component {
       this.state = {
         email : '',
         password : '',
-        redirect : false,
         modal: false
       }
   }
@@ -28,12 +26,6 @@ class Login extends Component {
 
     if(ConfigStorage.getToken())
       this.props.history.push("/dashboard");
-  }
-
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect from="/" to="/dashboard" />
-    }
   }
 
   handleOnChangeEmail = (event)=>{
@@ -68,14 +60,10 @@ class Login extends Component {
                       console.log(res.data);
                       ConfigStorage.setToken(res.data.access_token.token);
                       ConfigStorage.setUser(res.data.user);
-                      
+                      this.props.history.push('/dashboard');
                      /* this.setState({
                         loading: false
                       });*/
-                      
-                      this.setState({
-                      redirect: true
-                    })
         })
         .catch(err=>{
             console.error(err);
@@ -122,8 +110,6 @@ class Login extends Component {
                   changePass= { this.handleOnChangePass }
                   clickLogin= { this.handeOnClickLogin } 
                 />
-
-                { this.renderRedirect() }
 
                 <SignUp />
 

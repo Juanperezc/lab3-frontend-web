@@ -20,9 +20,13 @@ import navigation from '../../_nav';
 // routes config
 import routes from '../../routes';
 
+import ConfigStorage from '../../services/storage/config.store'
+
 const DefaultAside = React.lazy(() => import('./DefaultAside'));
 const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
 const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
+
+
 
 class DefaultLayout extends Component {
 
@@ -30,6 +34,7 @@ class DefaultLayout extends Component {
 
   signOut(e) {
     e.preventDefault()
+    ConfigStorage.clearSession();
     this.props.history.push('/login')
   }
 
