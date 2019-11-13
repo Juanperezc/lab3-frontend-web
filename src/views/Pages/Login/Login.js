@@ -5,6 +5,8 @@ import { CardGroup, Col,  Container, Row } from 'reactstrap';
 import FormLogin from './FormLogin';
 import SignUp from './SignUp';
 import ModalLogin from './ModalLogin'; 
+import Spinner from '../../Base/Spinner/spinner';
+
 
 //servicios
 import userService from '../../../services/userService'
@@ -18,7 +20,8 @@ class Login extends Component {
       this.state = {
         email : '',
         password : '',
-        modal: false
+        modal: false,
+        loading : false
       }
   }
 
@@ -47,6 +50,8 @@ class Login extends Component {
     "password" : "2514182657"
     }*/
 
+    this.setState({ loading: true })
+
     const cond = this.state.email.trim().length > 0 && this.state.password.trim().length;
    
     if(cond){
@@ -60,14 +65,14 @@ class Login extends Component {
                       console.log(res.data);
                       ConfigStorage.setToken(res.data.access_token.token);
                       ConfigStorage.setUser(res.data.user);
-                      this.props.history.push('/dashboard');
-                     /* this.setState({
-                        loading: false
-                      });*/
+                      this.props.history.push('/dashboard');                 
         })
         .catch(err=>{
             console.error(err);
             this.toggleModal();
+
+        }).finally(()=>{
+          this.setState({ loading: false });
         })
     }
   }
@@ -94,12 +99,9 @@ class Login extends Component {
 
   render() {
 
-    return (
-      <div className="app flex-row align-items-center">
-        
-        { this.showModal() }
-
-        <Container>
+    const body = this.state.loading ? 
+      <Spinner loading = { this.state.loading } /> :
+       <Container>
           <Row className="justify-content-center">
             <Col md="8">
               <CardGroup>
@@ -117,6 +119,14 @@ class Login extends Component {
             </Col>
           </Row>
         </Container>
+
+    return (
+      <div className="app flex-row align-items-center">
+        
+        { this.showModal() }
+         
+         { body }
+      
       </div>
     );
   }

@@ -17,7 +17,6 @@ const FormLogin = (props)=>(
                         </InputGroupText>
                     </InputGroupAddon>
                     <Input type="email" placeholder="Email"
-                           autoComplete="Email" 
                            value= { props.email }
                            onChange={ props.changeEmail }
                     />
