@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import {Route, Switch } from 'react-router-dom';
 import * as router from 'react-router-dom';
 import { Container } from 'reactstrap';
 
@@ -15,6 +15,9 @@ import {
   AppBreadcrumb2 as AppBreadcrumb,
   AppSidebarNav2 as AppSidebarNav,
 } from '@coreui/react';
+
+import Spinner from '../../views/Base/Spinner/spinner';
+
 // sidebar nav config
 import navigation from '../../_nav';
 // routes config
@@ -30,7 +33,13 @@ const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
 
 class DefaultLayout extends Component {
 
-  loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
+  loading = () => <div className="animated fadeIn pt-1 text-center"> <Spinner loading={ true }/> </div>
+
+
+   componentDidMount(){
+    if(!ConfigStorage.getToken())
+        this.props.history.push('/login');
+  }
 
   signOut(e) {
     e.preventDefault()
@@ -73,7 +82,7 @@ class DefaultLayout extends Component {
                         )} />
                     ) : (null);
                   })}
-                  <Redirect from="/" to="/login" />
+                  
                 </Switch>
               </Suspense>
             </Container>
