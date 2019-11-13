@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Badge, UncontrolledDropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem } from 'reactstrap';
 import PropTypes from 'prop-types';
-
+import ConfigStorage from '../../services/storage/config.store';
 import { AppAsideToggler, AppSidebarToggler } from '@coreui/react';
 
 const propTypes = {
@@ -12,6 +12,24 @@ const propTypes = {
 const defaultProps = {};
 
 class DefaultHeader extends Component {
+   
+   constructor(props){
+     super(props);
+
+     this.state = {
+       imagen: '../../assets/img/avatars/6.jpg'
+     }
+   }
+
+componentDidMount(){
+  const user = JSON.parse(ConfigStorage.getUser());
+  
+  if(user.photo)
+     this.setState({
+        imagen: 'http://157.56.176.217'.concat(user.photo.slice(21))
+      })
+}
+
   render() {
 
     // eslint-disable-next-line
@@ -46,7 +64,7 @@ class DefaultHeader extends Component {
           </NavItem>
           <UncontrolledDropdown nav direction="down">
             <DropdownToggle nav>
-              <img src={'../../assets/img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
+              <img src={ this.state.imagen } className="img-avatar" alt="admin@bootstrapmaster.com" />
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem header tag="div" className="text-center"><strong>Cuenta</strong></DropdownItem>
