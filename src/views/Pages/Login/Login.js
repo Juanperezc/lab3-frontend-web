@@ -24,6 +24,12 @@ class Login extends Component {
       }
   }
 
+  componentDidMount(){
+
+    if(ConfigStorage.getToken())
+      this.props.history.push("/dashboard");
+  }
+
   renderRedirect = () => {
     if (this.state.redirect) {
       return <Redirect from="/" to="/dashboard" />
