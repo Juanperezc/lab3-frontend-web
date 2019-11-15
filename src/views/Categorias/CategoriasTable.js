@@ -11,7 +11,7 @@ const CategoriasTable = (props)=>(
 
     <div className="animated fadeIn">
         <Row>
-          <Col xl={6}>
+          <Col xl={12}>
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i> Listado de Categorias <small className="text-muted"> </small>
