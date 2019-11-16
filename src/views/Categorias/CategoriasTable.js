@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Button, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
+import Spinner from '../Base/Spinner/spinner';
 
 //components
 import CategoriaRow from './CategoriaRow';
@@ -29,7 +30,8 @@ const CategoriasTable = (props)=>(
                     </tr>
                   </thead>
                   <tbody>
-                    {props.categorias.map((categoria, index) =>
+                    { props.spinner ? <Spinner loading= { true } /> :
+                      props.categorias.map((categoria, index) =>
                       <CategoriaRow 
                         key={categoria._id} 
                         edit= {()=> props.edit(categoria._id) } 
