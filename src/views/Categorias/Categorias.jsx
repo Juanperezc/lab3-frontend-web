@@ -1,4 +1,5 @@
 import React from 'react'
+import Swal from 'sweetalert2'
 
 //Components
 import CategoriasTable from './CategoriasTable';
@@ -97,7 +98,13 @@ handleOnSubmitForm = (event)=>{
 	 	.then(res=>{
 	 		 console.log(res.data)
 	 		 const categorias = this.state.categorias.concat(res.data.category);
-	 		 this.setState({ categorias })
+			 this.setState({ categorias })
+			 
+			 Swal.fire(
+				'Inclusion Exitosa!',
+				`Se agrego la categoria ${ res.data.category.name }`,
+				'success'
+			  ) 
 
 	 		})
 	 	.catch(err=>{ console.error(err)})

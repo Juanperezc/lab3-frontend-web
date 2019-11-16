@@ -5,11 +5,15 @@ import { Card,  CardBody,
 		 Button, Modal, ModalBody, ModalFooter,
 	 ModalHeader } from 'reactstrap';
 
+	 const getAction = (id)=>{
+		 return id == 0 ? 'Agregar' : 'Editar'
+	 }
+
 const CategoriaModal = (props)=>(
     
      <Modal isOpen={props.info} toggle={ props.toggleModal }
             className={'modal-info ' + props.className }>
-            <ModalHeader toggle={props.toggleModal }>Agregar Categoria</ModalHeader>
+            <ModalHeader toggle={props.toggleModal }>{ getAction(props.categoria._id) } Categoria</ModalHeader>
                <ModalBody>
                     <Card>	
 		              <CardBody>
