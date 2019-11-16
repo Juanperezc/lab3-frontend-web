@@ -111,14 +111,12 @@ handleOnSubmitForm = (event)=>{
 			 this.setState({  categorias })
 			 
 			 alertSuccess("Inclusión Exitosa!",
-			 	 `Se agrego la Categoría ${res.data.category.name} `)
-			  
+			 	 `Se agrego la Categoría ${res.data.category.name} `) 
 	 		})
 			 .catch(err=>{
 				console.error(err)
 				alertError('Oops...', `Error al Incluir ${ categoria.name }`)
 			})
-
 	}else{
 		const cat = { ...this.state.categoria }
 		

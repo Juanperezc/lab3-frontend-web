@@ -6,7 +6,7 @@ import FormLogin from './FormLogin';
 import SignUp from './SignUp';
 import ModalLogin from './ModalLogin'; 
 import Spinner from '../../Base/Spinner/spinner';
-
+import { alertInfo } from '../../Notifications/Alerts/SweetAlert'
 
 //servicios
 import userService from '../../../services/userService'
@@ -23,12 +23,18 @@ class Login extends Component {
         modal: false,
         loading : false
       }
+
   }
 
   componentDidMount(){
-
     if(ConfigStorage.getToken())
       this.props.history.push("/dashboard");
+    
+      const a = new URLSearchParams(this.props.location.search);
+      
+      if(this.props.location,a.get("exp")){
+        alertInfo('Sesión Expirada!','Inicie Sesión para continuar')
+      }
   }
 
   handleOnChangeEmail = (event)=>{
@@ -62,7 +68,6 @@ class Login extends Component {
 
        userService.login(data)
         .then(res=> {
-                      console.log(res.data);
                       ConfigStorage.setToken(res.data.access_token.token);
                       ConfigStorage.setUser(res.data.user);
                       this.props.history.push('/dashboard');                 

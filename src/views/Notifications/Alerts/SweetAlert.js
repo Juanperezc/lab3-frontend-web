@@ -34,8 +34,17 @@ const alertConfirm = ( f )=>{
       })
 }
 
+const alertInfo = (title, msj)=>{
+  Swal.fire({
+    icon: 'info',
+    title: title,
+    text: msj
+  })
+}
+
 export {
     alertSuccess,
     alertError,
-    alertConfirm
+    alertConfirm,
+    alertInfo
 }

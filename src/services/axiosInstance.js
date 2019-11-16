@@ -34,7 +34,7 @@ axiosInstance.interceptors.request.use(
      }
      else if ((error.response.status === 401) ){
          ConfigStorage.clearSession();
-         return Promise.reject('Invalid Token').finally(()=> window.location.hash = "#/login")
+         return Promise.reject('Invalid Token').finally(()=> window.location.hash = "#/login?exp=true")
      }
     else {
          console.log('test')
