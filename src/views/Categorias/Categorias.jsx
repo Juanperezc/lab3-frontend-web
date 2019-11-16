@@ -1,9 +1,13 @@
 import React from 'react'
-import Swal from 'sweetalert2'
+
 
 //Components
 import CategoriasTable from './CategoriasTable';
 import CategoriaModal from './CategoriaModal';
+import { 
+	alertSuccess,
+	alertError,
+	alertConfirm } from '../Notifications/Alerts/SweetAlert'
 
 //Services
 import CategoryService from '../../services/category.service';
@@ -21,6 +25,12 @@ export default class Categorias extends React.Component {
 		}
 	}
 
+setCategoria = ()=>{
+	this.setState({
+		categoria:  {_id: 0 , name: '', status:'Active'}
+	})
+}
+
 componentDidMount(){
 
 	CategoryService.getAll()
@@ -29,7 +39,10 @@ componentDidMount(){
 			this.setState({ categorias })
 			//categorias.forEach(x=>console.log(x))
 		})		
-		.catch(err=>{console.error(err)})
+		.catch(err=>{
+			console.error(err)
+			alertError('Oops...', `No se pudieron cargar las categorías `)
+		})
 		.finally(()=> this.setState({ spinner: false }))
 
 }
@@ -48,7 +61,8 @@ buscarCategoria = (id)=>{
 
 deleteCategoria = (key)=>{
 
-	CategoryService.delete(key)
+	alertConfirm( () =>{
+		CategoryService.delete(key)
 		.then(resp=>{
 			console.log(resp)
 			const categoria = resp.data.category;
@@ -58,27 +72,22 @@ deleteCategoria = (key)=>{
 			categorias.splice(idx,1);
 
 			this.setState({ categorias })
+			
+			alertSuccess('Eliminación Exitosa!', `Se elimino ${ categoria.name } `)
 
 		})
-		.catch(err=> console.error(err))
-
-	/*const categorias =  this.state.categorias.slice();
-	let idx = this.buscarCategoria(key);
-
-	categorias.splice(idx,1);
-
-	this.setState({
-		categorias : categorias	
-	})*/
+		.catch(err=> {
+			console.error(err)
+			alertError('Oops...', 'Error al Eliminar!')
+		})
+	})
 }
 
 
 toggleModal = ()=> {
 
 	if(this.state.modal)
-		this.setState({
-		categoria : {id: 0 , name: '', status:'Active'}
-	})
+		this.setCategoria();
 
     this.setState({
       modal: !this.state.modal,
@@ -89,10 +98,9 @@ toggleModal = ()=> {
 handleOnSubmitForm = (event)=>{
 
 	event.preventDefault();
-	let form = event.target;
+	const form = event.target;
 	let categoria;
-	console.log(form.id)
-	
+	console.log(form)
 	if(parseInt(form.id.value) === 0){
 	  categoria = { name : form.nombre.value , status : 'Active'};
 
@@ -100,16 +108,19 @@ handleOnSubmitForm = (event)=>{
 	 	.then(res=>{
 	 		 console.log(res.data)
 	 		 const categorias = this.state.categorias.concat(res.data.category);
-			 this.setState({ categorias })
-			 
-			 Swal.fire(
-				'Inclusion Exitosa!',
-				`Se agrego la categoria ${ res.data.category.name }`,
-				'success'
-			  ) 
+			 this.setState({ 
+				 categorias,
 
+				 })
+			 
+			 alertSuccess("Inclusión Exitosa!",
+			 	 `Se agrego la Categoría ${res.data.category.name} `)
+			  
 	 		})
-	 	.catch(err=>{ console.error(err)})
+			 .catch(err=>{
+				console.error(err)
+				alertError('Oops...', `Error al Incluir ${ categoria.name }`)
+			})
 
 	}else{
 		const cat = { ...this.state.categoria }
@@ -124,14 +135,16 @@ handleOnSubmitForm = (event)=>{
 
 				categorias[idx] = categoria
 				this.setState({ categorias })
+				alertSuccess('Exito!', `Se edito la Categoría ${ categoria.name }`)
 			})
-			.catch(err=>{console.error(err)})
+			.catch(err=>{
+				console.error(err)
+				alertError('Oops...', `Error al Editar ${ cat.name }`)
+			})
 	}
 
 	this.toggleModal();
-	this.setState({
-		categoria : {id: 0 , nombre: '', status:'Active'}
-	})
+	this.setCategoria();
 }
 
 editCategoria = (key)=>{

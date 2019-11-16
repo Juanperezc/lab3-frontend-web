@@ -6,7 +6,7 @@ import { Card,  CardBody,
 	 ModalHeader } from 'reactstrap';
 
 	 const getAction = (id)=>{
-		 return id == 0 ? 'Agregar' : 'Editar'
+		 return id === 0 ? 'Agregar' : 'Editar'
 	 }
 
 const CategoriaModal = (props)=>(
