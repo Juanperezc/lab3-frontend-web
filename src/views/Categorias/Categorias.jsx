@@ -15,7 +15,8 @@ export default class Categorias extends React.Component {
 		this.state = {
 			categorias : [],
 			modal : false,
-			categoria : {_id: 0 , name: '', status:'Active'}
+			categoria : {_id: 0 , name: '', status:'Active'},
+			spinner : true
 		}
 	}
 
@@ -28,6 +29,7 @@ componentDidMount(){
 			//categorias.forEach(x=>console.log(x))
 		})		
 		.catch(err=>{console.error(err)})
+		.finally(()=> this.setState({ spinner: false }))
 
 }
 
@@ -152,7 +154,7 @@ habdleOnChangeCategoria = (event)=>{
 					categorias = { this.state.categorias }
 					add = { this.toggleModal }
 					edit = { this.editCategoria }
-
+					spinner = { this.state.spinner }
 				/>
 
 				<CategoriaModal 
