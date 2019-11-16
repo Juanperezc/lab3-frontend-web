@@ -100,7 +100,7 @@ handleOnSubmitForm = (event)=>{
 	event.preventDefault();
 	const form = event.target;
 	let categoria;
-	console.log(form)
+
 	if(parseInt(form.id.value) === 0){
 	  categoria = { name : form.nombre.value , status : 'Active'};
 
@@ -108,10 +108,7 @@ handleOnSubmitForm = (event)=>{
 	 	.then(res=>{
 	 		 console.log(res.data)
 	 		 const categorias = this.state.categorias.concat(res.data.category);
-			 this.setState({ 
-				 categorias,
-
-				 })
+			 this.setState({  categorias })
 			 
 			 alertSuccess("Inclusión Exitosa!",
 			 	 `Se agrego la Categoría ${res.data.category.name} `)

@@ -25,7 +25,7 @@ class DefaultHeader extends Component {
 componentDidMount(){
   const user = JSON.parse(ConfigStorage.getUser());
   
-  if(user.photo)
+  if(user)
      this.setState({
        // imagen: 'http://157.56.176.217'.concat(user.photo.slice(21)),
         username : user.full_name
