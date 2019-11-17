@@ -31,9 +31,11 @@ class Login extends Component {
       this.props.history.push("/dashboard");
     
       const a = new URLSearchParams(this.props.location.search);
-      
-      if(this.props.location,a.get("exp")){
+      console.log("exp:", a.get("exp"))
+
+      if(a.get("exp")){
         alertInfo('Sesión Expirada!','Inicie Sesión para continuar')
+        window.location.hash = "#/login"
       }
   }
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Badge, Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
 
 import usersData from './UsersData'
+import UsersTable from './UsersTable/UsersTable'
 
 function UserRow(props) {
   const user = props.user
@@ -62,6 +63,21 @@ class Users extends Component {
             </Card>
           </Col>
         </Row>
+
+        <div className="animated fadeIn">
+          <Row>
+            <Col xl={12}>
+              <Card className="inverse">
+                <CardHeader>
+                  <i className="fa fa-align-justify"></i> Usuarios <small className="text-muted">List</small>
+                </CardHeader>
+                <CardBody>
+                  <UsersTable />
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </div>
       </div>
     )
   }
