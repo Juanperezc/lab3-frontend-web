@@ -27,7 +27,7 @@ componentDidMount(){
   
   if(user)
      this.setState({
-       // imagen: 'http://157.56.176.217'.concat(user.photo.slice(21)),
+        imagen: user.photo,
         username : user.full_name
       })
 }

@@ -5,7 +5,7 @@ import ConfigStorage from './storage/config.store'
 //'http://157.56.176.217'
 
 const axiosInstance = axios.create({
-    baseURL: 'http://157.56.176.217',
+    baseURL: 'http://127.0.0.1:3333',
     timeout: 20000,
     headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,8 @@ axiosInstance.interceptors.request.use(
      }
      else if ((error.response.status === 401) ){
          ConfigStorage.clearSession();
-         return Promise.reject('Invalid Token').finally(()=> window.location.hash = "#/login?exp=true")
+         return Promise.reject('Invalid Token')
+          .finally(()=> window.location.hash = "#/login?exp=true")
      }
     else {
          console.log('test')

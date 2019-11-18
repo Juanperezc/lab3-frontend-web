@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 //Components
 import CategoriasTable from './CategoriasTable';
 import CategoriaModal from './CategoriaModal';
@@ -37,7 +36,6 @@ componentDidMount(){
 		.then(res =>{
 			const categorias = res.data.categorias;
 			this.setState({ categorias })
-			//categorias.forEach(x=>console.log(x))
 		})		
 		.catch(err=>{
 			console.error(err)
@@ -57,7 +55,6 @@ buscarCategoria = (id)=>{
 
 	return i;
 }
-
 
 deleteCategoria = (key)=>{
 
@@ -155,7 +152,6 @@ editCategoria = (key)=>{
 habdleOnChangeCategoria = (event)=>{
 
 	const name = event.target.value;
-
 	const categoria = { ...this.state.categoria, name };
 
 	this.setState({ categoria })

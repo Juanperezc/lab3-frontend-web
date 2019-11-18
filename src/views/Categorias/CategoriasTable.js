@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Button, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
-import Spinner from '../Base/Spinner/spinner';
+import Spinner from '../Base/Spinner/spinner'
 
 //components
 import CategoriaRow from './CategoriaRow';

@@ -2,14 +2,16 @@ import React from 'react'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 
-import data from '../UsersData'
+
 import columns from './columns'
 
 
-const userTable = ()=>( 
-    <ReactTable data= { data } 
+const userTable = (props)=>( 
+    <ReactTable data= { props.data } 
                 columns = { columns }
-                className = "striped"
+                className = "striped text-center"
+                loading = { props.loading }
+                pageSize={ 10 }
      />)
 
 export default userTable;

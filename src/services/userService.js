@@ -9,6 +9,10 @@ class UserService{
     login = (data)=>{
         return axios.post('/api/auth/login', data);
     }
+
+    list(){
+    	return axios.get('/api/users')
+    }
 }
 
 const userService = new UserService()

@@ -46,7 +46,6 @@ class Login extends Component {
   } 
 
   handleOnChangePass = (event)=>{
-
     const password = event.target.value;
     this.setState({ password })
   }  
