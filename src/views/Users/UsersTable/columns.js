@@ -36,7 +36,7 @@ const getColor = (status)=>{
             Header: 'Nombre',
             accessor: 'full_name', // String-based value accessors!
             filterable:  true,
-            Cell: props => <Link to={ `/app/users/${props.row._original._id }`} > { props.value } { console.log(props)}</Link>
+            Cell: props => <Link to={ `/app/users/${props.row._original._id }`} > { props.value } </Link>
         }, 
         {
             Header: 'Username',
@@ -64,7 +64,7 @@ const getColor = (status)=>{
             Header: 'Acción',
             accessor: 'status', //d => d.friend.name // Custom value accessors!
             Cell: props => (
-                <Button  size="sm" color={ getColor(props.value) } onClick={ ()=> alert('Elimando') } >
+                <Button  size="sm" color={ getColor(props.value) } onClick={()=> console.log(props) } >
                     <i className={`${ getIcon(props.value) } icons font-2sm d-block mt-2`}> </i>
                 </Button>
             )

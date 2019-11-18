@@ -46,13 +46,8 @@ componentDidMount(){
 }
 
 buscarCategoria = (id)=>{
-
-	let i = 0;
-	const size = this.state.categorias.length;
+	const i = this.state.categorias.findIndex(cat=> cat._id === id);
 	
-	while(this.state.categorias[i]._id !== id && i < size )
-			i++
-
 	return i;
 }
 
@@ -103,7 +98,6 @@ handleOnSubmitForm = (event)=>{
 
 	 CategoryService.save(categoria)
 	 	.then(res=>{
-	 		 console.log(res.data)
 	 		 const categorias = this.state.categorias.concat(res.data.category);
 			 this.setState({  categorias })
 			 
