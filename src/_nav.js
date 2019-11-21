@@ -16,8 +16,18 @@ export default {
       badge: {
         variant: 'info',
         text: 'VIEW',
-      },
-    },]}
+      }
+    },
+    {
+      name: 'Usuarios',
+      url: '/users',
+      icon: 'cui-user',
+      badge: {
+        variant: 'info',
+        text: 'VIEW',
+      }
+    }
+    ]}
     /* {
       title: true,
       name: 'Theme',

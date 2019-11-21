@@ -19,7 +19,9 @@ const getColor = (status)=>{
      return  status === 'Banned' ? 'ghost-success' : 'ghost-danger'
 }
 
-    const columns = [ 
+const columns = (banned)=>(
+
+     [ 
         {
             Header: 'Icon',
             accessor: 'photo', // String-based value accessors!
@@ -64,11 +66,12 @@ const getColor = (status)=>{
             Header: 'Acción',
             accessor: 'status', //d => d.friend.name // Custom value accessors!
             Cell: props => (
-                <Button  size="sm" color={ getColor(props.value) } onClick={()=> console.log(props) } >
+                <Button  size="sm" color={ getColor(props.value) } onClick={()=> banned(props.row._original._id) } >
                     <i className={`${ getIcon(props.value) } icons font-2sm d-block mt-2`}> </i>
                 </Button>
             )
         },
     ]
+)
 
 export default columns;
