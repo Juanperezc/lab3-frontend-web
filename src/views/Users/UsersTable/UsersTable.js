@@ -5,7 +5,8 @@ import 'react-table/react-table.css'
 import columns from './columns'
 
 
-const userTable = (props)=>( 
+const userTable = (props)=>(
+	
     <ReactTable data= { props.data } 
                 columns = { columns(props.banned) }
                 className = "-striped text-center"
