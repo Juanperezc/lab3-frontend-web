@@ -38,7 +38,7 @@ const columns = (banned)=>(
             Header: 'Nombre',
             accessor: 'full_name', // String-based value accessors!
             filterable:  true,
-            Cell: props => <Link to={ `/app/users/${props.row._original._id }`} > { props.value } </Link>
+            Cell: props => <Link to={ `/users/${props.row._original._id }`} > { props.value } </Link>
         }, 
         {
             Header: 'Username',
