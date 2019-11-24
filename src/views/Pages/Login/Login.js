@@ -31,7 +31,6 @@ class Login extends Component {
       this.props.history.push("/dashboard");
     
       const a = new URLSearchParams(this.props.location.search);
-      console.log("exp:", a.get("exp"))
 
       if(a.get("exp")){
         alertInfo('Sesión Expirada!','Inicie Sesión para continuar')
@@ -69,9 +68,16 @@ class Login extends Component {
 
        userService.login(data)
         .then(res=> {
+              const user = res.data.user;            
+              
+              if(user.rol === 'Admin' && user.status === 'Active'){
                       ConfigStorage.setToken(res.data.access_token.token);
                       ConfigStorage.setUser(res.data.user);
-                      this.props.history.push('/dashboard');                 
+                      this.props.history.push('/dashboard');    
+              }
+              else
+                this.props.history.push('/403');
+
         })
         .catch(err=>{
             console.error(err);
@@ -124,6 +130,7 @@ class Login extends Component {
               </CardGroup>
             </Col>
           </Row>
+          
         </Container>
 
     return (
