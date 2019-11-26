@@ -17,6 +17,10 @@ class UserService{
     banned(id){
         return axios.put(`/api/user/banned/${id}`);
     }
+
+    getUser = (id)=>{
+        return axios.get(`/api/profile/${id}`);
+    }
 }
 
 const userService = new UserService()

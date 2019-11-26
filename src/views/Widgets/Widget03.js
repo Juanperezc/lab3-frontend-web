@@ -15,11 +15,13 @@ const defaultProps = {
 };
 
 class Widget03 extends Component {
+  
+
   render() {
 
     // eslint-disable-next-line
-    const { children, className, cssModule, dataBox, ...attributes } = this.props;
-
+    const { children, className, cssModule, dataBox, photo, alias, ...attributes } = this.props;
+ 
     // demo purposes only
     const data = dataBox();
     const variant = data.variant;
@@ -29,7 +31,6 @@ class Widget03 extends Component {
     }
 
     const back = 'bg-' + variant;
-    const icon = 'fa fa-' + variant;
     const keys = Object.keys(data);
     const vals = Object.values(data);
 
@@ -41,9 +42,12 @@ class Widget03 extends Component {
     return (
       <div className={classes}>
         <div className={classCardHeader}>
-          <i className={icon}></i>
-          {children}
+          <img src={ photo } width="100px" height="70px" className="img-avatar" alt={ alias } />
+            { children }
         </div>
+
+        <div>  <h3 className="text-uppercase text-value"> { alias } </h3> </div>
+       
         <div className={classCardBody}>
           <div>
             <div className="text-value">{vals[1]}</div>
@@ -52,6 +56,10 @@ class Widget03 extends Component {
           <div>
             <div className="text-value">{vals[2]}</div>
             <div className="text-uppercase text-muted small">{keys[2]}</div>
+          </div>
+          <div>
+            <div className="text-value">{vals[3]}</div>
+            <div className="text-uppercase text-muted small">{keys[3]}</div>
           </div>
         </div>
       </div>

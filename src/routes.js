@@ -34,7 +34,7 @@ const Colors = React.lazy(() => import('./views/Theme/Colors'));
 const Typography = React.lazy(() => import('./views/Theme/Typography'));
 const Widgets = React.lazy(() => import('./views/Widgets/Widgets'));
 const Users = React.lazy(() => import('./views/Users/Users'));
-const User = React.lazy(() => import('./views/Users/User'));
+const User = React.lazy(() => import('./views/Users/UserProfile/UserProfile'));
 const Categorias = React.lazy(()=> import('./views/Categorias/Categorias'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config

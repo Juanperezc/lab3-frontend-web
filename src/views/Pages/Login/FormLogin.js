@@ -13,7 +13,7 @@ const FormLogin = (props)=>(
                 <InputGroup className="mb-3">
                     <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                            <i className="icon-user"></i>
+                            <i className="fa fa-envelope"></i>
                         </InputGroupText>
                     </InputGroupAddon>
                     <Input type="email" placeholder="Email"

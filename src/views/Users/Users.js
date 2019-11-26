@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
+import Container from './Container';
 import UsersTable from './UsersTable/UsersTable'
 
 //Services
@@ -57,27 +57,14 @@ bannedUser = (id)=>{
   render() {
 
     return(
-      <div>
-          <div className="animated fadeIn">
-            <Row>
-              <Col xl={12}>
-                <Card>
-                  <CardHeader>
-                    <i className="fa fa-align-justify"></i> Usuarios <small className="text-muted">Listado</small>
-                  </CardHeader>
-                  <CardBody>
-                      <UsersTable 
-                        loading = { this.state.loading }
-                        data = { this.state.users }
-                        banned = { this.bannedUser }
-                       />
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
-        </div>
-        
-      </div>
+
+      <Container>
+          <UsersTable 
+            loading = { this.state.loading }
+            data = { this.state.users }
+            banned = { this.bannedUser }
+        />
+      </Container>     
     )
   }
 }
