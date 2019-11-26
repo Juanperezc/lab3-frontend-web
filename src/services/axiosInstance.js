@@ -5,7 +5,7 @@ import ConfigStorage from './storage/config.store'
 //'http://157.56.176.217'
 
 const axiosInstance = axios.create({
-    baseURL: 'http://127.0.0.1:3333',
+    baseURL: 'http://192.168.0.104:3333',
     timeout: 20000,
     headers: {
         'Content-Type': 'application/json',
